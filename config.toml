@@ -1,0 +1,11 @@
+PackageName = "model"
+OutDir = "model"
+Template = "./model.tpl"
+Tags = "db"
+
+[db]
+Name = "test"
+Address= "localhost:3306"
+User= "root"
+Password= "root"
+Tables = "user_charge"
