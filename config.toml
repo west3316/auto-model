@@ -1,11 +1,20 @@
+# model代码的包名
 PackageName = "model"
+# model代码的输出目录
 OutDir = "model"
+# 生成代码用到的模板文件
 Template = "./model.tpl"
+# 为Struct增加Tag
 Tags = "db"
 
 [db]
+# 数据库名称
 Name = "test"
+# 数据库地址
 Address= "localhost:3306"
+# 用户名
 User= "root"
+# 密码
 Password= "root"
+# 需要生成model的表
 Tables = "user_charge"
