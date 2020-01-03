@@ -5,7 +5,7 @@ auto-model 是一款简单的数据表模型生成工具，目前只支持mysql�
 ## 安装
 
 ```shell
-git clone https://gitee.com/GodanKing/auto-model.git
+git clone https://github.com/west3316/auto-model
 
 cd auto-model
 
