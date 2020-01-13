@@ -28,15 +28,19 @@ func toBytes(v interface{}) []byte {
 // toGoType mysql类型转为go类型
 func toGoType(typ []byte, null bool) string {
 	reg := regexp.MustCompile(`^\w+`)
-	typ = reg.Find(typ)
+	strType := string(reg.Find(typ))
 	var goType string
-	switch string(typ) {
+	switch strType {
 	case "char", "varchar", "text", "enum", "set", "json":
 		goType = "string"
 	case "binary", "varbinary", "blob":
 		goType = "[]byte"
 	case "tinyint", "smallint", "mediumint", "int":
-		goType = "int"
+		if string(typ) == "tinyint(1)" {
+			goType = "bool"
+		} else {
+			goType = "int"
+		}
 	case "bigint":
 		goType = "int64"
 	case "decimal", "float", "double":
