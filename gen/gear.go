@@ -63,5 +63,5 @@ func enumValues(typ string) []string {
 		return nil
 	}
 
-	return strings.Split(strings.Trim(string(typ), `enum()'`), `','`)
+	return strings.Split(strings.TrimRight(strings.TrimLeft(string(typ), `enum('`), "')"), `','`)
 }

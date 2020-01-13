@@ -1,4 +1,4 @@
-module auto-model
+module github.com/west3316/auto-model
 
 go 1.12
 

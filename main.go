@@ -2,12 +2,12 @@
 package main
 
 import (
-	"auto-model/gen"
 	"flag"
 	"log"
 	"os"
 
 	"github.com/BurntSushi/toml"
+	"github.com/west3316/auto-model/gen"
 )
 
 func main() {
