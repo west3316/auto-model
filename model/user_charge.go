@@ -24,7 +24,7 @@ func IsValidResult(v string) bool {
 type UserCharge struct {
 
 	// 唯一ID
-	ID int `db:"id" mark:"auto_increment"`
+	ID int `db:"id" mark:"primary_key,auto_increment"`
 
 	// 用户ID
 	UserID int `db:"user_id"`

@@ -111,18 +111,32 @@ func getFields(table string, tags string) ([]Field, []Enum, error) {
 		IndexExtra      = 6
 		IndexPrivileges = 7
 		IndexComment    = 8
+
+		TagPrimaryKey    = "primary_key"
+		TagAutoIncrement = "auto_increment"
 	)
 
 	var fields []Field
 	var enums []Enum
 	for _, cells := range result.Values {
 		field := toString(cells[IndexField])
+		var mark []string
+		var isPrimaryKey bool
+		if toString(cells[IndexKey]) == "PRI" {
+			isPrimaryKey = true
+			mark = append(mark, TagPrimaryKey)
+		}
+
+		if toString(cells[IndexExtra]) == TagAutoIncrement {
+			mark = append(mark, TagAutoIncrement)
+		}
+
 		fields = append(fields, Field{
 			Name:       snaker.SnakeToCamel(field),
 			Type:       toGoType(toBytes(cells[IndexType]), toString(cells[IndexNull]) == "YES"),
 			Comment:    toString(cells[IndexComment]),
-			PrimaryKey: toString(cells[IndexKey]) == "PRI",
-			Tags:       makeFieldTags(field, toString(cells[IndexExtra]) == "auto_increment", theTags),
+			PrimaryKey: isPrimaryKey,
+			Tags:       makeFieldTags(field, strings.Join(mark, ","), theTags),
 		})
 
 		last := fields[len(fields)-1]
