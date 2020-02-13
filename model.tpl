@@ -1,5 +1,6 @@
 package {{ .PackageName }}
 
+{{ if .Enums }}
 const({{ range $item := .Enums }}
     // {{ $item.Comment }}{{ range $val := $item.Values }}
     {{ $item.Prefix }}{{ $val }} = "{{ $val }}"{{ end }}
@@ -13,6 +14,7 @@ func IsValid{{$item.Prefix}}(v string) bool {
         {{ $item.Prefix }}{{ $val }}: true,{{ end }}
     }[v]
 }
+{{ end }}
 {{ end }}
 
 // {{ .StructName }} 表名: {{ .TableName }}
