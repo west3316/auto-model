@@ -1,6 +1,6 @@
 # auto-model
 
-auto-model 是一款简单的数据表模型生成工具，目前只支持mysql（或mariadb）
+auto-model 是一款简单的数据表模型代码生成工具，支持从 mysql（或mariadb）数据表生成golang代码。
 
 ## 安装
 
@@ -45,7 +45,7 @@ CREATE TABLE `user_charge` (
 
 ## 特点
 
-支持enum枚举类型（少得尴尬
+支持enum枚举类型
 
 
 
